@@ -1,0 +1,129 @@
+:root {
+    --chinese-red: #A30B12;
+    --rich-gold: #D4AF37;
+    --bg-light: #f4f4f4;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Serif TC', serif;
+    background-color: var(--bg-light);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: var(--chinese-red);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.control-panel {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--chinese-red);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: var(--chinese-red);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn.primary { background: var(--chinese-red); color: white; }
+.btn.secondary { background: var(--rich-gold); color: white; }
+
+/* Invitation Card with Image Template */
+.invitation-card {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1536 / 2752; /* Exact matching of Invitation-template-new.png dimensions */
+    background-image: url('Invitation-template-new.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.name-overlay {
+    position: absolute;
+    top: 53%; /* Position adjusted based on the template gap */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #FAD97A; /* Gold color matching the template */
+    font-size: 22px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    font-family: 'Noto Serif TC', serif;
+}
+
+.displayNameText {
+    border-bottom: 1.5px solid #FAD97A;
+    padding: 0 5px;
+    margin: 0 5px;
+    display: inline-block;
+    min-width: 80px;
+}
+
+@media (max-width: 480px) {
+    .name-overlay {
+        font-size: 18px;
+    }
+}

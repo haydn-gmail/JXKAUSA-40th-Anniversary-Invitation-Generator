@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全美江西同鄉會40週年慶典邀請函</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>邀請函自動生成系統</h1>
+            <p>全美江西同鄉會40週年慶典</p>
+        </header>
+        
+        <div class="control-panel">
+            <div class="input-group">
+                <label for="inviteeName">受邀人姓名</label>
+                <input type="text" id="inviteeName" placeholder="例如：張三" autocomplete="off">
+            </div>
+            <div class="actions">
+                <button id="btnGenerateImage" class="btn primary">保存為圖片</button>
+                <button id="btnGeneratePDF" class="btn secondary">保存為PDF</button>
+            </div>
+        </div>
+
+        <div class="preview-wrapper">
+            <div id="invitationCard" class="invitation-card">
+                <!-- Template image is set as background in CSS -->
+                
+                <!-- Overlay Name Section -->
+                <div class="name-overlay">
+                    尊敬的 <span class="displayNameText">___</span> 閣下：
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
