@@ -77,7 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Core drawing function using native canvas for pixel-perfect quality
     async function generateCanvasDataUrl(name) {
-        // Wait for fonts to be ready to ensure 'Noto Serif TC' is loaded
+        // Force-load bold weight for the exact characters we'll draw.
+        // Google Fonts uses unicode-range subsetting, so document.fonts.ready
+        // alone won't guarantee the bold subset for these specific chars is loaded.
+        const textToRender = `尊敬的   ${name}   閣下：`;
+        await Promise.all([
+            document.fonts.load(`bold 43px "Noto Serif TC"`, textToRender),
+            document.fonts.load(`bold 43px "Noto Serif SC"`, textToRender),
+        ]);
         await document.fonts.ready;
 
         const img = await new Promise((resolve, reject) => {
