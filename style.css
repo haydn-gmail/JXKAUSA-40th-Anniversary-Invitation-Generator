@@ -86,6 +86,17 @@ header h1 {
 
 .btn.primary { background: var(--chinese-red); color: white; }
 .btn.secondary { background: var(--rich-gold); color: white; }
+.btn.outline {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    background: transparent;
+    color: var(--chinese-red);
+    border: 2px solid var(--chinese-red);
+    text-align: center;
+    text-decoration: none;
+}
+.btn.outline:hover { background: var(--chinese-red); color: white; }
 
 /* Invitation Card with Image Template */
 .invitation-card {
