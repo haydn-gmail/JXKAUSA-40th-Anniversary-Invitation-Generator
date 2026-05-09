@@ -77,65 +77,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Core drawing function using native canvas for pixel-perfect quality
     async function generateCanvasDataUrl(name) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = "Anonymous";
-            img.onload = async () => {
-                try {
-                    // Wait for fonts to be ready to ensure 'Noto Serif TC' is loaded
-                    await document.fonts.ready;
+        // Wait for fonts to be ready to ensure 'Noto Serif TC' is loaded
+        await document.fonts.ready;
 
-                    const canvas = document.createElement('canvas');
-                    canvas.width = img.width;   // 1536
-                    canvas.height = img.height; // 2752
-                    const ctx = canvas.getContext('2d');
-
-                    // Draw background at native resolution (Zero degradation)
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                    // Setup text styling
-                    const fontSize = 68;
-                    ctx.font = `bold ${fontSize}px "Noto Serif TC", serif`;
-                    ctx.fillStyle = '#FAD97A';
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-                    
-                    // Add text shadow matching CSS
-                    ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-                    ctx.shadowBlur = 4;
-                    ctx.shadowOffsetX = 2;
-                    ctx.shadowOffsetY = 2;
-
-                    const yPos = canvas.height * 0.53 + (fontSize / 2);
-                    const text = `尊敬的   ${name}   閣下：`;
-                    
-                    ctx.fillText(text, canvas.width / 2, yPos);
-
-                    // Draw the underline for the name
-                    // We need to measure the text to place the line correctly
-                    ctx.shadowColor = 'transparent'; // Remove shadow for the line
-                    const prefixWidth = ctx.measureText("尊敬的   ").width;
-                    const nameWidth = ctx.measureText(name).width;
-                    const fullWidth = ctx.measureText(text).width;
-                    
-                    const startX = (canvas.width / 2) - (fullWidth / 2) + prefixWidth - 15;
-                    const endX = startX + nameWidth + 30;
-                    const lineY = yPos + (fontSize / 2) + 10;
-
-                    ctx.beginPath();
-                    ctx.moveTo(startX, lineY);
-                    ctx.lineTo(endX, lineY);
-                    ctx.strokeStyle = '#FAD97A';
-                    ctx.lineWidth = 4;
-                    ctx.stroke();
-
-                    resolve(canvas.toDataURL('image/png', 1.0));
-                } catch (e) {
-                    reject(e);
-                }
-            };
-            img.onerror = reject;
-            img.src = 'Invitation-template-new.png';
+        const img = await new Promise((resolve, reject) => {
+            const i = new Image();
+            i.onload = () => resolve(i);
+            i.onerror = reject;
+            i.src = INVITATION_TEMPLATE_DATA_URL;
         });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;   // 1536
+        canvas.height = img.height; // 2752
+        const ctx = canvas.getContext('2d');
+
+        // Draw background at native resolution (Zero degradation)
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Setup text styling
+        const fontSize = 43;
+        ctx.font = `bold ${fontSize}px "Noto Serif TC", serif`;
+        ctx.fillStyle = '#FAD97A';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Add text shadow matching CSS
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+
+        const yPos = canvas.height * 0.53 + (fontSize / 2);
+        const text = `尊敬的   ${name}   閣下：`;
+        
+        ctx.fillText(text, canvas.width / 2, yPos);
+
+        // Draw the underline for the name
+        ctx.shadowColor = 'transparent'; // Remove shadow for the line
+        const prefixWidth = ctx.measureText("尊敬的   ").width;
+        const nameWidth = ctx.measureText(name).width;
+        const fullWidth = ctx.measureText(text).width;
+        
+        const startX = (canvas.width / 2) - (fullWidth / 2) + prefixWidth - 8;
+        const endX = startX + nameWidth + 16;
+        const lineY = yPos + (fontSize / 2) + 5;
+
+        ctx.beginPath();
+        ctx.moveTo(startX, lineY);
+        ctx.lineTo(endX, lineY);
+        ctx.strokeStyle = '#FAD97A';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        return canvas.toDataURL('image/png', 1.0);
     }
 });

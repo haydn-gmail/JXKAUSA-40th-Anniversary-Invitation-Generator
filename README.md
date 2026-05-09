@@ -21,6 +21,35 @@
 2. 點擊「保存為圖片」或「保存為 PDF」。
 3. 文件將自動下載到您的設備中。
 
+## 部署與使用指南
+
+如果您想在自己的環境中部署此項目，請參考以下步驟：
+
+### 1. 本地開發
+此項目為純前端項目，不需要後端環境。
+1. **複製項目**：
+   ```bash
+   git clone https://github.com/您的用戶名/您的項目名.git
+   cd 您的項目名
+   ```
+2. **啟動本地服務**（推薦使用 `serve` 或 VS Code 的 Live Server）：
+   ```bash
+   npx serve .
+   ```
+3. 在瀏覽器訪問 `http://localhost:3000` 即可。
+
+### 2. 部署到 GitHub Pages (最推薦)
+這是最簡單的線上發佈方式，完全免費：
+1. 將代碼推送到 GitHub 倉庫。
+2. 進入倉庫的 **Settings** -> **Pages**。
+3. 在 **Build and deployment** -> **Branch** 下選擇 `main` 分支和 `/ (root)` 目錄。
+4. 點擊 **Save**。幾分鐘後，您的網站將通過 `https://您的用戶名.github.io/您的項目名/` 在線訪問。
+
+### 3. 部署到 Vercel / Netlify
+1. 登錄 Vercel 或 Netlify。
+2. 關聯您的 GitHub 賬號並選擇此倉庫。
+3. 無需配置編譯命令（Build Command），直接點擊 **Deploy** 即可。
+
 ## 開發者信息
 
 由 Antigravity AI 協助開發。
