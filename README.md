@@ -1,12 +1,15 @@
 # 全美江西同鄉會 40 週年慶典邀請函生成器
 
-這是一個為全美江西同鄉會（Jiangxi Kinship Association, USA）40 週年慶典開發的邀請函自動生成系統。用戶可以輸入受邀人姓名，系統將自動將姓名嵌入到精美的慶典模板中，並支持導出為高品質圖片（PNG）或 PDF 格式。
+這是一個為全美江西同鄉會（Jiangxi Kinship Association, USA）40 週年慶典開發的邀請函定制系統。用戶可以輸入受邀人姓名，系統將自動將姓名嵌入到精美的慶典模板中，並支持導出為高品質圖片（PNG）或 PDF 格式。
+
+### 🌐 線上訪問
+**[https://40th-gala.jiangxi-kinship-association-usa.org](https://40th-gala.jiangxi-kinship-association-usa.org)**
 
 ## 功能特點
 
 - **實時預覽**：輸入姓名時，邀請函預覽會實時更新。
 - **高品質導出**：使用原生 Canvas 繪圖技術，確保導出的圖片和 PDF 保持原始模板的高分辨率（1536x2752）。
-- **中英雙語支持**：界面和字體均優化了繁體中文的顯示效果。
+- **中英雙語支持**：界面和字體均優化了繁體中文的顯示效果，確保排版與字體權重的一致性。
 - **簡單易用**：一鍵保存，方便通過微信、電子郵件等方式發送。
 
 ## 技術棧
@@ -38,17 +41,12 @@
    ```
 3. 在瀏覽器訪問 `http://localhost:3000` 即可。
 
-### 2. 部署到 GitHub Pages (最推薦)
-這是最簡單的線上發佈方式，完全免費：
-1. 將代碼推送到 GitHub 倉庫。
-2. 進入倉庫的 **Settings** -> **Pages**。
-3. 在 **Build and deployment** -> **Branch** 下選擇 `main` 分支和 `/ (root)` 目錄。
-4. 點擊 **Save**。幾分鐘後，您的網站將通過 `https://您的用戶名.github.io/您的項目名/` 在線訪問。
-
-### 3. 部署到 Vercel / Netlify
-1. 登錄 Vercel 或 Netlify。
-2. 關聯您的 GitHub 賬號並選擇此倉庫。
-3. 無需配置編譯命令（Build Command），直接點擊 **Deploy** 即可。
+### 2. 生產環境部署 (Ubuntu VM + Nginx/Docker + Cloudflare)
+項目目前部署於自定義域名 `40th-gala.jiangxi-kinship-association-usa.org`。
+1. **準備環境**：確保 Ubuntu 服務器已安裝 Docker 或 Nginx。
+2. **配置 Nginx**：將靜態文件目錄指向本項目文件夾，並配置對應的 `server_name`。
+3. **域名解析**：在 Cloudflare 中配置 DNS A 記錄指向服務器 IP。
+4. **SSL 證書**：通過 Cloudflare 邊緣證書或 Let's Encrypt 配置 HTTPS 確保安全訪問。
 
 ## 開發者信息
 

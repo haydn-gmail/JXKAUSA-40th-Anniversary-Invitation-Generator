@@ -93,6 +93,7 @@ body {
     font-weight: 700;
     margin-bottom: 25px;
     letter-spacing: 1px;
+    font-family: 'KaiTi', '楷体', 'STKaiti', serif;
 }
 
 /* ── App Container ─────────────────────────── */
@@ -121,6 +122,8 @@ body {
     font-weight: bold;
     margin-bottom: 8px;
     color: var(--chinese-red);
+    font-size: 16px;
+    font-family: 'KaiTi', '楷体', 'STKaiti', serif;
 }
 
 .input-group input {
@@ -147,13 +150,14 @@ body {
     border: none;
     border-radius: 8px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     transition: background 0.3s, transform 0.15s;
     background: var(--chinese-red);
     color: white;
     text-align: center;
     text-decoration: none;
+    font-family: 'KaiTi', '楷体', 'STKaiti', serif;
 }
 
 .btn:hover {
