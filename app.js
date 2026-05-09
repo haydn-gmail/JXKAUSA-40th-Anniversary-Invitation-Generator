@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Setup text styling
         const fontSize = 43;
-        ctx.font = `bold ${fontSize}px "Noto Serif TC", serif`;
+        ctx.font = `bold ${fontSize}px "Noto Serif TC", "Noto Serif SC", serif`;
         ctx.fillStyle = '#FAD97A';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
