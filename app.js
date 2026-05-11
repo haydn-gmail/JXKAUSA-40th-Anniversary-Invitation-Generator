@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const inputName = document.getElementById('inviteeName');
+    const prefixSelect = document.getElementById('prefixSelect');
+    const prefixCustom = document.getElementById('prefixCustom');
+    const showSuffix = document.getElementById('showSuffix');
+    const previewPrefix = document.getElementById('previewPrefix');
+    const previewSuffix = document.getElementById('previewSuffix');
     const displayNames = document.querySelectorAll('.displayNameText');
     const btnGenerateImage = document.getElementById('btnGenerateImage');
     const btnGeneratePDF = document.getElementById('btnGeneratePDF');
@@ -11,6 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
         displayNames.forEach(el => {
             el.textContent = name || '___';
         });
+    });
+
+    function updatePrefix() {
+        let prefix = prefixSelect.value;
+        if (prefix === 'custom') {
+            prefixCustom.style.display = 'block';
+            prefix = prefixCustom.value.trim();
+        } else {
+            prefixCustom.style.display = 'none';
+        }
+        previewPrefix.textContent = prefix;
+    }
+
+    prefixSelect.addEventListener('change', updatePrefix);
+    prefixCustom.addEventListener('input', updatePrefix);
+
+    showSuffix.addEventListener('change', (e) => {
+        previewSuffix.textContent = e.target.checked ? ' 閣下' : '';
     });
 
     // Generate Image function
@@ -77,10 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Core drawing function using native canvas for pixel-perfect quality
     async function generateCanvasDataUrl(name) {
-        // Force-load bold weight for the exact characters we'll draw.
-        // Google Fonts uses unicode-range subsetting, so document.fonts.ready
-        // alone won't guarantee the bold subset for these specific chars is loaded.
-        const textToRender = `尊敬的   ${name}   閣下：`;
+        let prefixVal = prefixSelect.value;
+        if (prefixVal === 'custom') {
+            prefixVal = prefixCustom.value.trim();
+        }
+        const suffixVal = showSuffix.checked ? ' 閣下' : '';
+        const prefixStr = prefixVal ? `${prefixVal}   ` : '';
+        const textToRender = `${prefixStr}${name}  ${suffixVal}：`;
         await Promise.all([
             document.fonts.load(`bold 43px "Noto Serif TC"`, textToRender),
             document.fonts.load(`bold 43px "Noto Serif SC"`, textToRender),
@@ -116,13 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.shadowOffsetY = 2;
 
         const yPos = canvas.height * 0.42 + (fontSize / 2);
-        const text = `尊敬的   ${name}   閣下：`;
+        const text = `${prefixStr}${name}  ${suffixVal}：`;
         
         ctx.fillText(text, canvas.width / 2, yPos);
 
         // Draw the underline for the name
         ctx.shadowColor = 'transparent'; // Remove shadow for the line
-        const prefixWidth = ctx.measureText("尊敬的   ").width;
+        const prefixWidth = prefixStr ? ctx.measureText(prefixStr).width : 0;
         const nameWidth = ctx.measureText(name).width;
         const fullWidth = ctx.measureText(text).width;
         

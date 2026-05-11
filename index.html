@@ -29,6 +29,23 @@
         
         <div class="control-panel">
             <div class="input-group">
+                <label for="prefixSelect">敬语前缀 (可选择或自定义)</label>
+                <select id="prefixSelect">
+                    <option value="尊敬的">尊敬的</option>
+                    <option value="親愛的">親愛的</option>
+                    <option value="敬愛的">敬愛的</option>
+                    <option value="">(無)</option>
+                    <option value="custom">自定義...</option>
+                </select>
+                <input type="text" id="prefixCustom" placeholder="請輸入自定義敬語" style="display: none; margin-top: 10px;" autocomplete="off">
+            </div>
+            <div class="input-group checkbox-group">
+                <label>
+                    <input type="checkbox" id="showSuffix" checked>
+                    显示敬称后缀 “阁下”
+                </label>
+            </div>
+            <div class="input-group">
                 <label for="inviteeName">受邀人姓名</label>
                 <input type="text" id="inviteeName" placeholder="例如：张三" autocomplete="off">
             </div>
@@ -45,7 +62,7 @@
                 
                 <!-- Overlay Name Section -->
                 <div class="name-overlay">
-                    尊敬的 <span class="displayNameText">___</span> 閣下：
+                    <span id="previewPrefix">尊敬的</span> <span class="displayNameText">___</span><span id="previewSuffix"> 閣下</span>：
                 </div>
             </div>
         </div>
