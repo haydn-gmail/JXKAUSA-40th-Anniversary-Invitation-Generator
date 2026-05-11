@@ -200,6 +200,7 @@ body {
 .invitation-card {
     width: 100%;
     max-width: 500px;
+    margin: 0 auto;
     aspect-ratio: 1536 / 2752;
     /* Exact matching of Invitation-template.png dimensions */
     background-image: url('Invitation-template.png');
