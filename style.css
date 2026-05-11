@@ -44,7 +44,7 @@ body {
 .banner-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.35);
+    background: rgba(255, 255, 255, 0.35);
 }
 
 .header-content {
@@ -63,7 +63,7 @@ body {
     height: 110px;
     border-radius: 50%;
     object-fit: contain;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     flex-shrink: 0;
     background: white;
     border: 3px solid var(--rich-gold);
@@ -109,7 +109,7 @@ body {
     background: white;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     margin-bottom: 30px;
 }
 
@@ -180,26 +180,29 @@ body {
 .invitation-card {
     width: 100%;
     max-width: 500px;
-    aspect-ratio: 1536 / 2752; /* Exact matching of Invitation-template.png dimensions */
+    aspect-ratio: 1536 / 2752;
+    /* Exact matching of Invitation-template.png dimensions */
     background-image: url('Invitation-template.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
     border-radius: 4px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .name-overlay {
     position: absolute;
-    top: 53%; /* Position in gap between title and THE HONOR section */
+    top: 42%;
+    /* Position in gap between title and THE HONOR section */
     left: 0;
     width: 100%;
     text-align: center;
-    color: #FAD97A; /* Gold color matching the template */
+    color: #FAD97A;
+    /* Gold color matching the template */
     font-size: 16px;
     font-weight: 700;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     font-family: 'Noto Serif TC', 'Noto Serif SC', serif;
 }
 
@@ -215,23 +218,29 @@ body {
     .site-header {
         min-height: 160px;
     }
+
     .header-content {
         gap: 14px;
         padding: 20px 16px;
     }
+
     .header-logo {
         width: 76px;
         height: 76px;
     }
+
     .header-text h1 {
         font-size: 30px;
     }
+
     .header-subtitle {
         font-size: 16px;
     }
+
     .app-title {
         font-size: 18px;
     }
+
     .name-overlay {
         font-size: 14px;
     }

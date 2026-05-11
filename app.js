@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.shadowOffsetX = 2;
         ctx.shadowOffsetY = 2;
 
-        const yPos = canvas.height * 0.53 + (fontSize / 2);
+        const yPos = canvas.height * 0.42 + (fontSize / 2);
         const text = `尊敬的   ${name}   閣下：`;
         
         ctx.fillText(text, canvas.width / 2, yPos);
